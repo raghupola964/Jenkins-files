@@ -1,0 +1,62 @@
+Started by user admin
+Obtained alpine17 from git https://github.com/raghupola964/Jenkins-files
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/third-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/raghupola964/Jenkins-files
+ > git init /var/lib/jenkins/workspace/third-pipeline # timeout=10
+Fetching upstream changes from https://github.com/raghupola964/Jenkins-files
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/raghupola964/Jenkins-files +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/raghupola964/Jenkins-files # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 48bbbde1dafa1bc7e91c519ac7a30236bbdf243e (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 48bbbde1dafa1bc7e91c519ac7a30236bbdf243e # timeout=10
+Commit message: "Create alpine17"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:17-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 115:122 -w /var/lib/jenkins/workspace/third-pipeline -v /var/lib/jenkins/workspace/third-pipeline:/var/lib/jenkins/workspace/third-pipeline:rw,z -v /var/lib/jenkins/workspace/third-pipeline@tmp:/var/lib/jenkins/workspace/third-pipeline@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:17-alpine cat
+$ docker top 06953d630d1664d965ecc0dc53f14008daa6f54b4fdeaf64f2a428b0d3166392 -eo pid,comm
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ node --version
+v17.9.1
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+$ docker stop --time=1 06953d630d1664d965ecc0dc53f14008daa6f54b4fdeaf64f2a428b0d3166392
+$ docker rm -f --volumes 06953d630d1664d965ecc0dc53f14008daa6f54b4fdeaf64f2a428b0d3166392
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
