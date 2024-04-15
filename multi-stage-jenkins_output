@@ -1,0 +1,263 @@
+Started by user admin
+Obtained multi-stage-multi-agent/Jenkinsfile from git https://github.com/raghupola964/Jenkins-Zero-To-Hero.git
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Back-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/fourth-pipeline
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/raghupola964/Jenkins-Zero-To-Hero.git
+ > git init /var/lib/jenkins/workspace/fourth-pipeline # timeout=10
+Fetching upstream changes from https://github.com/raghupola964/Jenkins-Zero-To-Hero.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/raghupola964/Jenkins-Zero-To-Hero.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/raghupola964/Jenkins-Zero-To-Hero.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 # timeout=10
+Commit message: "Update Jenkinsfile"
+First time build. Skipping changelog.
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . maven:3.8.1-adoptopenjdk-11
+
+Error: No such object: maven:3.8.1-adoptopenjdk-11
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker pull maven:3.8.1-adoptopenjdk-11
+3.8.1-adoptopenjdk-11: Pulling from library/maven
+16ec32c2132b: Pulling fs layer
+3f63509f5b97: Pulling fs layer
+34d7b43f221b: Pulling fs layer
+a1931e18ae45: Pulling fs layer
+20904a3b2df7: Pulling fs layer
+fb5c0685f15f: Pulling fs layer
+a18abadafb9a: Pulling fs layer
+a1931e18ae45: Waiting
+20904a3b2df7: Waiting
+fb5c0685f15f: Waiting
+a18abadafb9a: Waiting
+16ec32c2132b: Verifying Checksum
+16ec32c2132b: Download complete
+3f63509f5b97: Verifying Checksum
+3f63509f5b97: Download complete
+20904a3b2df7: Verifying Checksum
+20904a3b2df7: Download complete
+fb5c0685f15f: Verifying Checksum
+fb5c0685f15f: Download complete
+a1931e18ae45: Verifying Checksum
+a1931e18ae45: Download complete
+a18abadafb9a: Verifying Checksum
+a18abadafb9a: Download complete
+34d7b43f221b: Verifying Checksum
+34d7b43f221b: Download complete
+16ec32c2132b: Pull complete
+3f63509f5b97: Pull complete
+34d7b43f221b: Pull complete
+a1931e18ae45: Pull complete
+20904a3b2df7: Pull complete
+fb5c0685f15f: Pull complete
+a18abadafb9a: Pull complete
+Digest: sha256:143ff7942b5ef5a004252405a31fa2813dfa438f08494fad1757029de5f64082
+Status: Downloaded newer image for maven:3.8.1-adoptopenjdk-11
+docker.io/library/maven:3.8.1-adoptopenjdk-11
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 115:122 -w /var/lib/jenkins/workspace/fourth-pipeline -v /var/lib/jenkins/workspace/fourth-pipeline:/var/lib/jenkins/workspace/fourth-pipeline:rw,z -v /var/lib/jenkins/workspace/fourth-pipeline@tmp:/var/lib/jenkins/workspace/fourth-pipeline@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** maven:3.8.1-adoptopenjdk-11 cat
+$ docker top 4488b18daaa7121a681fa98d5a0fc1a5521d4e2f3d5e681b70dc7bb96ada0087 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ mvn --version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /usr/share/maven
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.5.0-1014-aws", arch: "amd64", family: "unix"
+[Pipeline] }
+$ docker stop --time=1 4488b18daaa7121a681fa98d5a0fc1a5521d4e2f3d5e681b70dc7bb96ada0087
+$ docker rm -f --volumes 4488b18daaa7121a681fa98d5a0fc1a5521d4e2f3d5e681b70dc7bb96ada0087
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Front-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/fourth-pipeline
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/fourth-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/raghupola964/Jenkins-Zero-To-Hero.git # timeout=10
+Fetching upstream changes from https://github.com/raghupola964/Jenkins-Zero-To-Hero.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/raghupola964/Jenkins-Zero-To-Hero.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:16-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 115:122 -w /var/lib/jenkins/workspace/fourth-pipeline -v /var/lib/jenkins/workspace/fourth-pipeline:/var/lib/jenkins/workspace/fourth-pipeline:rw,z -v /var/lib/jenkins/workspace/fourth-pipeline@tmp:/var/lib/jenkins/workspace/fourth-pipeline@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:16-alpine cat
+$ docker top e007a2a050bffab8b9ed6b3fb80e5e36d7fb91953711429d30c18723321c9468 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ node --version
+v16.20.2
+[Pipeline] }
+$ docker stop --time=1 e007a2a050bffab8b9ed6b3fb80e5e36d7fb91953711429d30c18723321c9468
+$ docker rm -f --volumes e007a2a050bffab8b9ed6b3fb80e5e36d7fb91953711429d30c18723321c9468
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (DB)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/fourth-pipeline
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/fourth-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/raghupola964/Jenkins-Zero-To-Hero.git # timeout=10
+Fetching upstream changes from https://github.com/raghupola964/Jenkins-Zero-To-Hero.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/raghupola964/Jenkins-Zero-To-Hero.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 752c1e2d694d3f1a35a3c7340009203cf43f1cb2 # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . mysql:latest
+
+Error: No such object: mysql:latest
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker pull mysql:latest
+latest: Pulling from library/mysql
+2ba873cb070a: Pulling fs layer
+dd1a4da808dd: Pulling fs layer
+3292fb4adf41: Pulling fs layer
+3811c45068cc: Pulling fs layer
+e13320244c05: Pulling fs layer
+6a34d702f281: Pulling fs layer
+de90f4481477: Pulling fs layer
+d575200ae375: Pulling fs layer
+aea400be5707: Pulling fs layer
+38c930606a4f: Pulling fs layer
+3811c45068cc: Waiting
+e13320244c05: Waiting
+6a34d702f281: Waiting
+de90f4481477: Waiting
+d575200ae375: Waiting
+aea400be5707: Waiting
+38c930606a4f: Waiting
+dd1a4da808dd: Verifying Checksum
+dd1a4da808dd: Download complete
+3292fb4adf41: Verifying Checksum
+3292fb4adf41: Download complete
+e13320244c05: Verifying Checksum
+e13320244c05: Download complete
+3811c45068cc: Verifying Checksum
+3811c45068cc: Download complete
+6a34d702f281: Verifying Checksum
+6a34d702f281: Download complete
+d575200ae375: Verifying Checksum
+d575200ae375: Download complete
+2ba873cb070a: Verifying Checksum
+2ba873cb070a: Download complete
+38c930606a4f: Verifying Checksum
+38c930606a4f: Download complete
+de90f4481477: Verifying Checksum
+de90f4481477: Download complete
+aea400be5707: Verifying Checksum
+aea400be5707: Download complete
+2ba873cb070a: Pull complete
+dd1a4da808dd: Pull complete
+3292fb4adf41: Pull complete
+3811c45068cc: Pull complete
+e13320244c05: Pull complete
+6a34d702f281: Pull complete
+de90f4481477: Pull complete
+d575200ae375: Pull complete
+aea400be5707: Pull complete
+38c930606a4f: Pull complete
+Digest: sha256:0f2e15fb8b47db2518b1428239ed3e3fe6a6693401b2cf19552063562cfc2fc4
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 115:122 -w /var/lib/jenkins/workspace/fourth-pipeline -v /var/lib/jenkins/workspace/fourth-pipeline:/var/lib/jenkins/workspace/fourth-pipeline:rw,z -v /var/lib/jenkins/workspace/fourth-pipeline@tmp:/var/lib/jenkins/workspace/fourth-pipeline@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** mysql:latest cat
+$ docker top b336d5e8724bb6f8ece8c83c4d6c72c0b58ec6b482085078ae87cd515a236265 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ mysql --version
+mysql  Ver 8.3.0 for Linux on x86_64 (MySQL Community Server - GPL)
+[Pipeline] }
+$ docker stop --time=1 b336d5e8724bb6f8ece8c83c4d6c72c0b58ec6b482085078ae87cd515a236265
+$ docker rm -f --volumes b336d5e8724bb6f8ece8c83c4d6c72c0b58ec6b482085078ae87cd515a236265
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
