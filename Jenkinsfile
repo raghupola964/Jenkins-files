@@ -11,5 +11,10 @@ pipeline {
                 sh 'docker run hello-java'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'junit tests/results.xml' // Adjust for your test framework 
+            }
+        }
     }
 }
