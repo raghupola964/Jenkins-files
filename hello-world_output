@@ -1,0 +1,107 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/raghupola964/Jenkins-files.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/fifth-build
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/fifth-build/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/raghupola964/Jenkins-files.git # timeout=10
+Fetching upstream changes from https://github.com/raghupola964/Jenkins-files.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/raghupola964/Jenkins-files.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision df7fbd4f4fd01ca7f7dc0f21a34d7bb1c354a768 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f df7fbd4f4fd01ca7f7dc0f21a34d7bb1c354a768 # timeout=10
+Commit message: "Update Dockerfile"
+ > git rev-list --no-walk 387adfdba3a57b76ea35f8676454a2be2dc59823 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ docker build -t hello-java .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon    128kB
+
+Step 1/5 : FROM openjdk:11
+11: Pulling from library/openjdk
+001c52e26ad5: Pulling fs layer
+d9d4b9b6e964: Pulling fs layer
+2068746827ec: Pulling fs layer
+9daef329d350: Pulling fs layer
+d85151f15b66: Pulling fs layer
+66223a710990: Pulling fs layer
+db38d58ec8ab: Pulling fs layer
+9daef329d350: Waiting
+d85151f15b66: Waiting
+66223a710990: Waiting
+db38d58ec8ab: Waiting
+d9d4b9b6e964: Verifying Checksum
+d9d4b9b6e964: Download complete
+2068746827ec: Verifying Checksum
+2068746827ec: Download complete
+001c52e26ad5: Verifying Checksum
+001c52e26ad5: Download complete
+66223a710990: Verifying Checksum
+66223a710990: Download complete
+9daef329d350: Verifying Checksum
+9daef329d350: Download complete
+d85151f15b66: Verifying Checksum
+d85151f15b66: Download complete
+db38d58ec8ab: Verifying Checksum
+db38d58ec8ab: Download complete
+001c52e26ad5: Pull complete
+d9d4b9b6e964: Pull complete
+2068746827ec: Pull complete
+9daef329d350: Pull complete
+d85151f15b66: Pull complete
+66223a710990: Pull complete
+db38d58ec8ab: Pull complete
+Digest: sha256:99bac5bf83633e3c7399aed725c8415e7b569b54e03e4599e580fc9cdb7c21ab
+Status: Downloaded newer image for openjdk:11
+ ---> 47a932d998b7
+Step 2/5 : WORKDIR /app
+ ---> Running in 566e3940d20f
+Removing intermediate container 566e3940d20f
+ ---> d544843957b6
+Step 3/5 : COPY HelloWorld.java .
+ ---> 6daec8d48c4d
+Step 4/5 : RUN javac HelloWorld.java
+ ---> Running in d676cdcc3851
+Removing intermediate container d676cdcc3851
+ ---> 096340333fea
+Step 5/5 : CMD ["java", "HelloWorld"]
+ ---> Running in 8dca38dc65f8
+Removing intermediate container 8dca38dc65f8
+ ---> f2eadb975f3e
+Successfully built f2eadb975f3e
+Successfully tagged hello-java:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run)
+[Pipeline] sh
++ docker run hello-java
+Hello, Jenkins from Java!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
