@@ -1,5 +1,5 @@
-FROM openjdk:11  # Use a Java 11 base image
+FROM openjdk:11
 WORKDIR /app 
-COPY HelloWorld.java .  # Copy your code
-RUN javac HelloWorld.java  # Compile
-CMD ["java", "HelloWorld"]  # Command to run  
+COPY HelloWorld.java .
+RUN javac HelloWorld.java
+CMD ["java", "HelloWorld"]
